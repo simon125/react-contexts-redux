@@ -5,10 +5,15 @@ export const ProductsList = () => {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    // https://dummyjson.com/products
-    // wykonaj request pod podany endpoint
-    // zweryfikuj response w konsoli
-    // zapisz dane z responsu do satanu lokalnego lub stanu w kontekście
+    fetch("https://dummyjson.com/products")
+      .then((res) => res.json())
+      .then((data) => {
+        /*
+        zwerfyikuj co jest w konsoli - co się pobiera - następnie przypisz dane (tablice produktów)
+        do stanu products
+        */
+        console.log(data);
+      });
   }, []);
 
   return (

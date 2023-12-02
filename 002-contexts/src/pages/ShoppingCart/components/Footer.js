@@ -8,30 +8,34 @@ export const Footer = () => {
   const products = [];
 
   const handleClick = () => {
-    fetch("https://dummyjson.com/http/200", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      /**
-       * zmień to co wysyłamy na tablice id wybranych produktów
-       */
-      body: JSON.stringify({ products: "trelemorele" }),
-    })
-      .then((res) => res.json())
-      .then(() => {
-        /**
-         * zresetuj stan reduxowy do stanu początkowego tak żeby
-         * można było na nowo coś kupować :)
-         */
-      });
+    /**
+     * POST
+     * https://dummyjson.com/http/200
+     *
+     * napisz funckje wykonującą request http metodą POST
+     * użyj wbudowanej funkcji fetch
+     * w body wyślij idki produktów któreuser wybrał klikając w ekranie z produktami
+     * niech idki będą kluczami a ilość poszczególnych produktów wartością
+     * np.
+     *
+     * {
+     *  telefon: 2,
+     *  telewizor: 1,
+     *  ziemniaki: 20
+     * }
+     *
+     *
+     */
   };
 
   if (products.length === 0) return null;
 
   return (
     <article>
-      <button onClick={handleClick} className="action-button">
+      <button
+        onClick={undefined /* TUTAJ POWINIEN BYĆ TWÓJ ONCLICK */}
+        className="action-button"
+      >
         Sfinalizuj transakcje
       </button>
     </article>

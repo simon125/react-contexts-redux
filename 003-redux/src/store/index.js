@@ -1,0 +1,3 @@
+/**
+ * MIESJCE NA STORE REDUXOWY
+ */
