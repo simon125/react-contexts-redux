@@ -1,12 +1,8 @@
-import React, { useContext, useState } from "react";
-import { TodosContext } from "../../../contexts/TodosContext";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 export const TodoForm = () => {
   const [title, setTitle] = useState("");
-
-  // const ctx = useContext(TodosContext);
-  const { addNewTodo } = useContext(TodosContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -15,8 +11,6 @@ export const TodoForm = () => {
       id: Math.random(),
       title,
     };
-
-    addNewTodo(newTodo);
 
     setTitle("");
   };

@@ -1,12 +1,8 @@
-import React, { useContext } from "react";
-import { TodosContext } from "../../../contexts/TodosContext";
+import React from "react";
 import { Statistics } from "./Statistics";
 
 export const TodoTable = () => {
-  // <TodoTable cokolwiek={todos} setTodos={setTodos} />
-  // props.cokolwiek
-
-  const { todos, removeTodo } = useContext(TodosContext);
+  const todos = [];
 
   return (
     <>
@@ -25,14 +21,7 @@ export const TodoTable = () => {
                 <td>{todo.id}</td>
                 <td>{todo.title}</td>
                 <td>
-                  <button
-                    onClick={() => {
-                      removeTodo(todo.id);
-                    }}
-                    style={{ width: "fit-content" }}
-                  >
-                    Remove
-                  </button>
+                  <button style={{ width: "fit-content" }}>Remove</button>
                 </td>
               </tr>
             ))}
