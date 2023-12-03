@@ -1,5 +1,12 @@
 import React from "react";
+import { ParentA } from "./ParentA";
 
-export const GrandParentA = () => {
-  return <article style={{ background: "#451234" }}>GrandParentA</article>;
+export const GrandParentA = (props) => {
+  // <GrandParentA counter={counter} setCounter={setCounter}/>
+  return (
+    <article style={{ background: "#451234" }}>
+      GrandParentA
+      <ParentA counter={props.counter} setCounter={props.setCounter} />
+    </article>
+  );
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { GrandParentA } from "./components/GrandParentA";
 
 /**
@@ -8,10 +8,12 @@ import { GrandParentA } from "./components/GrandParentA";
  */
 
 export const Lecture = () => {
+  const [counter, setCounter] = useState(10);
+
   return (
     <article>
-      Lecture
-      <GrandParentA />
+      Lecture: <b>{counter}</b>
+      <GrandParentA counter={counter} setCounter={setCounter} />
     </article>
   );
 };

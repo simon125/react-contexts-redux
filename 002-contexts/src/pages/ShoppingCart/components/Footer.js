@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Footer.scss";
+import { ShoppingCartContext } from "../../../contexts/ShoppingCartContex";
 
 export const Footer = () => {
   /**
    * products będzie tablicą produktów które pochodza ze stora = to co user wybrał
    */
-  const products = [];
+
+  const { selectedProducts, resetProducts } = useContext(ShoppingCartContext);
 
   const handleClick = () => {
+    fetch("https://dummyjson.com/http/200", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(selectedProducts),
+    }).finally(() => {
+      resetProducts();
+    });
     /**
      * POST
      * https://dummyjson.com/http/200
@@ -25,17 +36,15 @@ export const Footer = () => {
      * }
      *
      *
+     *
      */
   };
 
-  if (products.length === 0) return null;
+  if (selectedProducts.length === 0) return null;
 
   return (
     <article>
-      <button
-        onClick={undefined /* TUTAJ POWINIEN BYĆ TWÓJ ONCLICK */}
-        className="action-button"
-      >
+      <button onClick={handleClick} className="action-button">
         Sfinalizuj transakcje
       </button>
     </article>

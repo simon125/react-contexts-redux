@@ -1,7 +1,13 @@
 import React from "react";
 import "./Product.scss";
+import { addProduct } from "../../../store/shoppingCartSlice";
+import { useDispatch } from "react-redux";
 
-export const Product = ({ product }) => {
+export const Product = (props) => {
+  const { product } = props;
+
+  const dispatch = useDispatch();
+
   /**
    * sprawdź czy w storze istnieje już element który też jest dostepny w propsach
    * jeżeli tak przypisz do zmiennej wartość true dzięki temu przycisk zostanie zablokowany
@@ -13,6 +19,8 @@ export const Product = ({ product }) => {
     /**
      * dodaj produkt do stora
      */
+
+    dispatch(addProduct(product));
   };
 
   return (

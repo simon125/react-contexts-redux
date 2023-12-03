@@ -1,23 +1,22 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { addTodo } from "../../../store/todosSlice";
 
 export const TodoForm = () => {
   const [title, setTitle] = useState("");
 
+  const dispatch = useDispatch();
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    const newTodo = {
-      id: Math.random(),
-      title,
-    };
+    dispatch(addTodo(title));
 
     setTitle("");
   };
 
   return (
     <article>
-      <Link to="/todos">Przejdź do listy todos</Link>
       <form onSubmit={handleSubmit}>
         <input
           value={title}

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import "./Footer.scss";
+import { ShoppingCartContext } from "../../../contexts/ShoppingCartContex";
 
 export const Footer = () => {
   /**
@@ -9,13 +10,22 @@ export const Footer = () => {
    * zmienna total jest wyświetlana userowi
    */
 
-  const total = 100;
+  // const ceny = [123, 321, 543, 567];
+
+  // const total = ceny.reduce((acc, element) => {
+  //   return acc + element;
+  // }, 0);
+
+  const { totalPrice } = useContext(ShoppingCartContext);
+
+  // if (total === 0) return null;
+  if (totalPrice === 0) return null;
 
   return (
     <article className="footer">
       <div className="container">
         <p>
-          Total: <b>{total}$</b>
+          Total: <b>{totalPrice}$</b>
         </p>
         <Link className="link" role="button" to="/shopping-cart">
           Przejdź do koszyka

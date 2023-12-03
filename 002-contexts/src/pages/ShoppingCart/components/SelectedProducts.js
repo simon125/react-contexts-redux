@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import "./SelectedProducts.scss";
+import { ShoppingCartContext } from "../../../contexts/ShoppingCartContex";
 
 export const SelectedProducts = () => {
-  const products = [];
+  const { totalPrice, selectedProducts, removeProduct, editAmountProduct } =
+    useContext(ShoppingCartContext);
+
+  const products = selectedProducts;
 
   /**
    * policz cene wszystkich produktów w koszyku
    * uwzględnij też wybraną ilość produktów
    */
 
-  const total = 100;
-
   const handleCouterChange = (id, amount) => {
-    console.log(id, amount);
+    editAmountProduct(id, amount);
   };
 
   const handleDeleteClick = (id) => {
     console.log(id);
+    removeProduct(id);
+    /**
+     * funckja usuwająca wskazany element z tablicy "selectedProducts"
+     */
   };
 
   return (
@@ -40,7 +46,7 @@ export const SelectedProducts = () => {
             </tr>
           )}
           {products.map((product) => (
-            <tr>
+            <tr key={product.id}>
               <td>{product.title}</td>
               <td>
                 <input
@@ -71,7 +77,7 @@ export const SelectedProducts = () => {
               <td></td>
               <td style={{ textAlign: "right" }}>Total:</td>
               <td>
-                <b> {total}$</b>
+                <b> {totalPrice}$</b>
               </td>
             </tr>
           )}
